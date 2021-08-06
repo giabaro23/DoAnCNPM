@@ -2,7 +2,7 @@ import axiosClient from "./axiosClient";
 
 const sumUserAPI = {
   getSumUserAPI: () => {
-    const url = "/admin/users/sum";
+    const url = "/admin/user/sum";
     return axiosClient.get(url);
   },
 };

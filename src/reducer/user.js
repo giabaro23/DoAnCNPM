@@ -18,6 +18,9 @@ const myReduce = (state = inistate, action) => {
         lastName: action.payload.data.last_name,
         email: action.payload.data.email,
         url: action.payload.data.photo_url,
+        gender: action.payload.data.gender,
+        address: action.payload.data.address,
+        phoneNum: action.payload.data.phone_number,
       };
       return newState;
     default:

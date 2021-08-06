@@ -24,6 +24,22 @@ const userAPI = {
     const url = `/admin/users?role=${param}`;
     return axiosClient.get(url);
   },
+  deleteUser: (id) => {
+    const url = `/admin/users/${id}`;
+    return axiosClient.delete(url);
+  },
+  updatePassword: (data) => {
+    const url = "/users/password";
+    return axiosClient.put(url, data);
+  },
+  getUserDetail: (id) => {
+    const url = `/admin/users/${id}`;
+    return axiosClient.get(url);
+  },
+  getUserVisit: () => {
+    const url = "/admin/user/present";
+    return axiosClient.get(url);
+  },
 };
 
 export default userAPI;

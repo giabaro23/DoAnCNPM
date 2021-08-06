@@ -12,7 +12,7 @@ function Header() {
   const history = useHistory();
   const logout = () => {
     localStorage.removeItem("authentication_token");
-    history.push("/");
+    history.push("/login");
   };
 
   const userInfo = useSelector((state) => state.infoUser);
@@ -20,7 +20,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header__logo">
-        <h1>Admin</h1>
+        <h1>Kênh admin</h1>
       </div>
       <div className="header__content">
         <BsIcons.BsGrid className="header__icon"></BsIcons.BsGrid>

@@ -1,69 +1,84 @@
-import React, { useEffect, useState } from "react";
-import "./Login.css";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Form, Input } from "antd";
 import axios from "axios";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import * as toastMessage from "../../toast/toastMessage";
-import { getProfileUser } from "../../action/userAction";
+import "./Login.css";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const history = useHistory();
-  const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = {
-      username: email,
-      password: password,
-    };
+  const onFinish = async (values) => {
+    console.log("Success:", values);
     try {
       const response = await axios.post(
         "https://your-ecommerce.herokuapp.com/users/login",
-        data
+        values
       );
-      console.log(response.data.email);
+      console.log(response.data);
       const authentication_token = response.data.authentication_token;
       localStorage.setItem("authentication_token", authentication_token);
       if (response.status === 200) {
-        history.push("/trangchu");
+        history.push("/profile");
       }
     } catch (error) {
       console.log(error);
-      toastMessage.toastError("Login fail. Please login again!");
+      toastMessage.toastError("Tên đăng nhập hoặc mật khẩu không đúng!");
     }
   };
 
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <div className="login">
+      <img
+        className="login__backgroundImage"
+        src="https://deo.shopeemobile.com/shopee/shopee-seller-live-sg/rootpages/static/modules/account/image/login-img.9347138.png"
+        alt=""
+      />
+      <div className="login__title">
+        <h1>Kênh admin</h1>
+      </div>
+      <div className="login__note">
+        <p>
+          Chào mừng bạn đến với trang admin của shop Eco, để chuyển đến trang
+          mua bán hàng
+        </p>
+        <a
+          className="login__link"
+          href="https://shopeco-manage.netlify.app/"
+          target="blank"
+        >
+          Vui lòng click vào đây
+        </a>
+      </div>
       <div className="login__container">
         <h1>Đăng nhập</h1>
-        <form onSubmit={handleSubmit}>
-          <h5>Tên đăng nhập</h5>
-          <input
-            type="text"
-            placeholder="username"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <h5>Mật khẩu</h5>
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
+          <Form.Item
+            className="login__label"
+            label="Tên đăng nhập"
+            name="username"
+            rules={[
+              { required: true, message: "Vui lòng nhập tên đăng nhập!" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            className="login__label"
+            label="Mật khẩu"
+            name="password"
+            rules={[{ required: true, message: "Vui lòng nhập mật khẩu" }]}
+          >
+            <Input.Password />
+          </Form.Item>
 
           <button type="submit" className="login__signInButton">
             Đăng nhập
           </button>
-        </form>
-
-        <button className="login__registerButton">
-          Đăng kí tài khoản admin
-        </button>
+        </Form>
       </div>
     </div>
   );

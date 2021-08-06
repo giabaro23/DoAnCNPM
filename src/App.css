@@ -1,7 +1,5 @@
 .app {
   display: flex;
-
+  background: #f5f5f5;
   font-family: Montserrat, sans-serif;
-  width: 100vw;
-  height: 100vh;
 }

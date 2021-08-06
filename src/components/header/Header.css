@@ -40,6 +40,11 @@
   margin-left: 4px;
 }
 
+.header__logo > h1 {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
 .header__icon {
   border-radius: 14px;
   padding: 10px;
@@ -51,5 +56,16 @@
 }
 
 .header__logout {
-  padding-right: 20px;
+  margin-right: 20px;
+
+  height: 25px;
+  background-color: rgb(236, 59, 59);
+  color: white;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.header__logout:hover {
+  background: rgba(236, 59, 59, 0.8);
 }

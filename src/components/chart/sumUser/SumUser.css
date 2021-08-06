@@ -1,7 +1,8 @@
 .statistic__container {
   margin-top: 100px;
-  margin-left: 250px;
+  margin-left: 350px;
 }
 .statistic {
   display: flex;
+  margin-bottom: 20px;
 }

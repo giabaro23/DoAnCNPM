@@ -32,3 +32,23 @@ export const getListUser = (users) => {
     payload: users,
   };
 };
+
+export const deleteUser = (id) => {
+  return {
+    type: actionTypes.DELETE_USER,
+    payload: id,
+  };
+};
+
+export const selectedUser = (user) => {
+  return {
+    type: actionTypes.SELECTED_USER,
+    payload: user,
+  };
+};
+export const getUserVisit = (data) => {
+  return {
+    type: actionTypes.GET_USER_VISIT,
+    payload: { data },
+  };
+};

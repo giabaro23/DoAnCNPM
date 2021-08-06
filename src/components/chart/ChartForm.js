@@ -9,11 +9,11 @@ function ChartForm({ title, number, path }) {
         <p>{title}</p>
       </div>
       <p className="chart__num">{number}</p>
-      <button className="chart__btn">
+      {/* <button className="chart__btn">
         <Link to={path} className="chart__btn-link">
           Xem chi tiết
         </Link>
-      </button>
+      </button> */}
     </div>
   );
 }

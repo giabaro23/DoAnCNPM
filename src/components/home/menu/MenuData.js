@@ -3,11 +3,14 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
+import * as BiIcons from "react-icons/bi";
 
 export const MenuData = [
   {
     title: "Thông tin của bạn",
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    icon: (
+      <AiIcons.AiOutlineUser fontSize="1.5em" color="rgba(0, 87, 145,0.8)" />
+    ),
     iconClosed: <IoIcons.IoIosArrowDown />,
     iconOpened: <IoIcons.IoIosArrowUp />,
     subNav: [
@@ -20,7 +23,9 @@ export const MenuData = [
   },
   {
     title: "Quản lý người dùng",
-    icon: <AiIcons.AiFillHome />,
+    icon: (
+      <AiIcons.AiOutlineUser fontSize="1.5em" color="rgba(0, 87, 145,0.8)" />
+    ),
     iconClosed: <IoIcons.IoIosArrowDown />,
     iconOpened: <IoIcons.IoIosArrowUp />,
     subNav: [
@@ -37,7 +42,12 @@ export const MenuData = [
   },
   {
     title: "Quản lý sản phẩm",
-    icon: <AiIcons.AiFillHome />,
+    icon: (
+      <AiIcons.AiOutlineShoppingCart
+        fontSize="1.5em"
+        color="rgb(236, 59, 59)"
+      />
+    ),
     iconClosed: <IoIcons.IoIosArrowDown />,
     iconOpened: <IoIcons.IoIosArrowUp />,
     subNav: [
@@ -45,16 +55,12 @@ export const MenuData = [
         title: "Tất cả sản phẩm",
         path: "/product",
       },
-      {
-        title: "Sản phẩm vi phạm",
-        path: "/bc",
-      },
     ],
     open: true,
   },
   {
     title: "Dữ liệu",
-    icon: <AiIcons.AiFillHome />,
+    icon: <BiIcons.BiData fontSize="1.5em" color="rgb(236, 59, 59)" />,
     iconClosed: <IoIcons.IoIosArrowDown />,
     iconOpened: <IoIcons.IoIosArrowUp />,
     subNav: [

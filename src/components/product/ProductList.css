@@ -14,3 +14,8 @@
   margin-top: 18px;
   color: #005791;
 }
+.product__list-loading {
+  width: 640px;
+  height: 375px;
+  margin-left: 200px;
+}

@@ -19,7 +19,7 @@ function ProductDetail() {
 
         dispatch(selectedProduct(response));
       } catch (error) {
-        console.log(error);
+        console.log(error);   
       }
     };
     fetchProductDetail();

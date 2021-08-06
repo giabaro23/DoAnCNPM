@@ -1,9 +1,11 @@
 import "./ListSeller.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getListUser } from "../../../../action/userAction";
+import { deleteUser, getListUser } from "../../../../action/userAction";
 import userAPI from "../../../../API/userAPI";
+import { Link } from "react-router-dom";
 import "../../../product/table.css";
+import { message, Popconfirm } from "antd";
 function ListSeller() {
   const listUser = useSelector((state) => state.listUser);
   const dispatch = useDispatch();
@@ -18,12 +20,38 @@ function ListSeller() {
       }
     };
     fetchListUser();
-  }, []);
+  }, [dispatch]);
+  // const handleDeleteUser = async (id) => {
+  //   try {
+  //     const res = await userAPI.deleteUser(id);
+  //     console.log(res);
+  //     dispatch(deleteUser(id));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const handleDeleteUser = async (id) => {
+    try {
+      const res = await userAPI.deleteUser(id);
+      console.log(res);
+      dispatch(deleteUser(id));
+      message.success("Xóa thành công!");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  function cancel(e) {
+    console.log(e);
+  }
   return (
     <div className="seller">
       {listUser.users.length === 0 ? (
-        <div className="seller">loading...</div>
+        <img
+          className="seller__loading"
+          src="https://i0.wp.com/thumbs.gfycat.com/CompleteZanyIlsamochadegu-small.gif"
+          alt=""
+        />
       ) : (
         <table className="table">
           <thead>
@@ -48,7 +76,18 @@ function ListSeller() {
                   <th>{user.address}</th>
                   <th>{user.role}</th>
                   <th>
-                    <button className="table__btn">Xóa</button>
+                    <Link to={`/profile/${user.id}`}>
+                      <button className="table__btn1">Xem</button>
+                    </Link>
+                    <Popconfirm
+                      title="Bạn có chắc chắn muốn xóa người dùng này?"
+                      onConfirm={() => handleDeleteUser(user.id)}
+                      onCancel={cancel}
+                      okText="Có"
+                      cancelText="Không"
+                    >
+                      <button className="table__btn2">Xóa</button>
+                    </Popconfirm>
                   </th>
                 </tr>
               );

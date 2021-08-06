@@ -39,49 +39,65 @@ function App() {
       {/* {!token ? <Redirect to="/" /> : <Redirect to="/trangchu" />} */}
       <div className="app">
         <Switch>
-          <Route exact path="/">
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return <Redirect to="/login" />;
+            }}
+          ></Route>
+          {!token ? (
+            <Route exact path="/login">
+              <Login />
+            </Route>
+          ) : (
+            <Switch>
+              <Route exact path="/profile/:userId">
+                <Header />
+                <Menu />
+                <ProfileForm />
+              </Route>
+
+              <Route path="/chart">
+                <Header />
+                <Menu />
+                <SumUser />
+              </Route>
+              <Route exact path="/product">
+                <Header />
+                <Menu />
+                <ProductList />
+              </Route>
+              <Route exact path="/profile">
+                <Header />
+                <Menu />
+                <AdminProfile />
+              </Route>
+              <Route exact path="/profile/:profileId">
+                <Header />
+                <Menu />
+                <AdminProfile />
+              </Route>
+              <Route exact path="/client">
+                <Header />
+                <Menu />
+                <ListClient />
+              </Route>
+              <Route exact path="/seller">
+                <Header />
+                <Menu />
+                <ListSeller />
+              </Route>
+              <Route exact path="/product/:productId">
+                <Header />
+                <Menu />
+                <ProductDetail />
+              </Route>
+            </Switch>
+          )}
+          {/* <Route exact path="/">
             <Login />
-          </Route>
-          <Route path="/trangchu">
-            <Header />
-            <Menu />
-            <ProfileForm />
-          </Route>
-          <Route path="/chart">
-            <Header />
-            <Menu />
-            <SumUser />
-          </Route>
-          <Route exact path="/product">
-            <Header />
-            <Menu />
-            <ProductList />
-          </Route>
-          <Route exact path="/profile">
-            <Header />
-            <Menu />
-            <AdminProfile />
-          </Route>
-          <Route exact path="/profile/:profileId">
-            <Header />
-            <Menu />
-            <AdminProfile />
-          </Route>
-          <Route exact path="/client">
-            <Header />
-            <Menu />
-            <ListClient />
-          </Route>
-          <Route exact path="/seller">
-            <Header />
-            <Menu />
-            <ListSeller />
-          </Route>
-          <Route exact path="/product/:productId">
-            <Header />
-            <Menu />
-            <ProductDetail />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
       <ToastContainer />

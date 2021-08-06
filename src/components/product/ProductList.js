@@ -29,12 +29,15 @@ function ProductList() {
   return (
     <div className="product__list">
       {products.length === 0 ? (
-        <div className="product__list">loading...</div>
+        <img
+          className="product__list-loading"
+          src="https://i0.wp.com/thumbs.gfycat.com/CompleteZanyIlsamochadegu-small.gif"
+          alt=""
+        />
       ) : (
         <table className="table">
           <thead>
             <tr>
-              <th>Id</th>
               <th>Hình ảnh</th>
               <th>Tên sản phẩm</th>
               <th>Số lượng</th>
@@ -47,7 +50,6 @@ function ProductList() {
             {products.map((product) => {
               return (
                 <tr key={product.id}>
-                  <th>{product.id}</th>
                   <th>
                     <img
                       src={product.link_image}

@@ -2,3 +2,37 @@
   margin-left: 270px;
   margin-top: 100px;
 }
+.table__btn1 {
+  width: 50px;
+  height: 25px;
+  background-color: rgb(0, 87, 145);
+  color: white;
+  align-items: center;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.table__btn1:hover {
+  background: rgba(0, 87, 145, 0.8);
+}
+.table__btn2 {
+  width: 50px;
+  height: 25px;
+  background-color: rgb(236, 59, 59);
+  color: white;
+  align-items: center;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.table__btn2:hover {
+  background: rgba(236, 59, 59, 0.8);
+}
+
+.seller__loading {
+  width: 640px;
+  height: 375px;
+  margin-left: 200px;
+}
